@@ -1,0 +1,20 @@
+- hosts: all
+  gather_facts: False
+  vars:
+    build_version:
+      version_812:
+        itm:
+          6: '6.2.33.1'
+          10: '6.3.05.1'
+    version: version_812
+    ansible_distribution_major_version: 6
+  tasks:
+      - debug: var=build_version
+      - debug: var=version
+      - debug: var=ansible_distribution_major_version
+      - debug:
+          msg: "{{ build_version[version]['itm'][ansible_distribution_major_version] }}"
+      - set_fact:
+          newversion: "{{ build_version[version]['itm'][ansible_distribution_major_version] }}"
+      - debug:
+          var: newversion
