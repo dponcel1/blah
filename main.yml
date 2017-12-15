@@ -1,5 +1,8 @@
 ###
 - hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
   gather_facts: False
   vars:
     build_version:
